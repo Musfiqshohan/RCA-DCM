@@ -1,0 +1,15 @@
+node,tvd_diff
+carts,7.379500
+catalogue-db,2.665800
+payment,2.281600
+user,1.893500
+orders-db,1.752600
+carts-db,1.622400
+session-db,1.526100
+front-end,1.067000
+rabbitmq,0.889800
+user-db,0.798200
+catalogue,0.788100
+orders,0.573100
+shipping,0.554300
+queue-master,0.399000

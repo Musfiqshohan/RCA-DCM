@@ -1,0 +1,15 @@
+node,stopped_epoch,converged
+carts,5,True
+catalogue-db,5,True
+session-db,5,True
+rabbitmq,5,True
+front-end,10,True
+orders-db,10,True
+user-db,10,True
+orders,15,True
+catalogue,15,True
+user,15,True
+queue-master,15,True
+payment,15,True
+shipping,15,True
+carts-db,25,True

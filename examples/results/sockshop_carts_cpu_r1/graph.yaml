@@ -1,0 +1,34 @@
+graphs:
+  sockshop_sink_confounded:
+    type: admg
+    dag:
+      carts: []
+      carts-db: []
+      catalogue: []
+      catalogue-db: []
+      front-end: []
+      orders: []
+      orders-db: []
+      payment: []
+      queue-master: []
+      rabbitmq: []
+      session-db: []
+      shipping: []
+      user: []
+      user-db: []
+    confounders: {}
+    dim_dict:
+      carts: 1
+      carts-db: 1
+      catalogue: 1
+      catalogue-db: 1
+      front-end: 1
+      orders: 1
+      orders-db: 1
+      payment: 1
+      queue-master: 1
+      rabbitmq: 1
+      session-db: 1
+      shipping: 1
+      user: 1
+      user-db: 1
