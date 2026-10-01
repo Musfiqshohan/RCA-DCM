@@ -1,0 +1,393 @@
+datasets:
+  wt_bernoulli_v1:
+    normal_files:
+    - fans_off.csv
+    anomalous_files:
+    - random_loads_both.csv
+    - random_loads_intake.csv
+    root_causes:
+      random_loads_both.csv: L_in,L_out
+      random_loads_intake.csv: L_in
+  wt_changepoints_v1:
+    normal_files: []
+    anomalous_files:
+    - load_in_seed_0.csv
+    - load_in_seed_1.csv
+    - load_in_seed_2.csv
+    - load_in_seed_3.csv
+    - load_in_seed_4.csv
+    - load_in_seed_5.csv
+    - load_in_seed_6.csv
+    - load_in_seed_7.csv
+    - load_in_seed_8.csv
+    - load_in_seed_9.csv
+    root_causes:
+      load_in_seed_0.csv: L_in
+      load_in_seed_1.csv: L_in
+      load_in_seed_2.csv: L_in
+      load_in_seed_3.csv: L_in
+      load_in_seed_4.csv: L_in
+      load_in_seed_5.csv: L_in
+      load_in_seed_6.csv: L_in
+      load_in_seed_7.csv: L_in
+      load_in_seed_8.csv: L_in
+      load_in_seed_9.csv: L_in
+  wt_intake_impulse_v1:
+    normal_files: []
+    anomalous_files:
+    - load_out_0.01_osr_downwind_4.csv
+    - load_out_0.5_osr_downwind_2.csv
+    - load_out_0.5_osr_downwind_4.csv
+    - load_out_0.5_osr_downwind_8.csv
+    - load_out_1_osr_downwind_4.csv
+    root_causes:
+      load_out_0.01_osr_downwind_4.csv: L_in,L_out,O_dw
+      load_out_0.5_osr_downwind_2.csv: L_in,L_out,O_dw
+      load_out_0.5_osr_downwind_4.csv: L_in,L_out,O_dw
+      load_out_0.5_osr_downwind_8.csv: L_in,L_out,O_dw
+      load_out_1_osr_downwind_4.csv: L_in,L_out,O_dw
+  wt_pc_validate_v1:
+    normal_files: []
+    anomalous_files:
+    - validate_pressure_downwind_loads.csv
+    root_causes:
+      validate_pressure_downwind_loads.csv: pressure_downwind
+  wt_pressure_control_v1:
+    normal_files:
+    - hatch_0.csv
+    anomalous_files: []
+    root_causes: {}
+  wt_test_v1:
+    normal_files:
+    - no_load.csv
+    - zero_load.csv
+    anomalous_files:
+    - analog_calibration.csv
+    - mic_effects.csv
+    - osr_barometers.csv
+    - osr_mic.csv
+    - potis_coarse.csv
+    - potis_fine.csv
+    - steps.csv
+    - tach_resolution.csv
+    root_causes:
+      analog_calibration.csv: R_in,R_out,R_1,R_2
+      mic_effects.csv: L_in,L_out,H
+      osr_barometers.csv: O_up,O_dw,O_amb,O_int
+      osr_mic.csv: O_M
+      potis_coarse.csv: A_1,A_2
+      potis_fine.csv: A_1,A_2
+      steps.csv: L_in,H,L_out
+      tach_resolution.csv: T_in,T_out
+  wt_validate_v1:
+    normal_files: []
+    anomalous_files:
+    - validate_hatch_mic.csv
+    - validate_hatch_pressures.csv
+    - validate_hatch_rpms.csv
+    - validate_load_in.csv
+    - validate_load_in_current_out.csv
+    - validate_load_in_mic.csv
+    - validate_load_out.csv
+    - validate_load_out_current_in.csv
+    - validate_load_out_mic.csv
+    - validate_load_out_pressure_intake.csv
+    - validate_osr_1.csv
+    - validate_osr_2.csv
+    - validate_osr_ambient.csv
+    - validate_osr_downwind.csv
+    - validate_osr_in.csv
+    - validate_osr_intake.csv
+    - validate_osr_mic.csv
+    - validate_osr_out.csv
+    - validate_osr_upwind.csv
+    - validate_pot_1.csv
+    - validate_pot_2.csv
+    - validate_res_in.csv
+    - validate_res_out.csv
+    - validate_v_1.csv
+    - validate_v_2.csv
+    - validate_v_in.csv
+    - validate_v_mic.csv
+    - validate_v_out.csv
+    root_causes:
+      validate_hatch_mic.csv: H
+      validate_hatch_pressures.csv: H
+      validate_hatch_rpms.csv: H
+      validate_load_in.csv: L_in
+      validate_load_in_current_out.csv: L_in
+      validate_load_in_mic.csv: L_in
+      validate_load_out.csv: L_out
+      validate_load_out_current_in.csv: L_out
+      validate_load_out_mic.csv: L_out
+      validate_load_out_pressure_intake.csv: L_out
+      validate_osr_1.csv: O_1
+      validate_osr_2.csv: O_2
+      validate_osr_ambient.csv: O_amb
+      validate_osr_downwind.csv: O_dw
+      validate_osr_in.csv: O_in
+      validate_osr_intake.csv: O_int
+      validate_osr_mic.csv: O_mic
+      validate_osr_out.csv: O_out
+      validate_osr_upwind.csv: O_up
+      validate_pot_1.csv: A_1
+      validate_pot_2.csv: A_2
+      validate_res_in.csv: T_in
+      validate_res_out.csv: T_out
+      validate_v_1.csv: V_1
+      validate_v_2.csv: V_2
+      validate_v_in.csv: V_in
+      validate_v_mic.csv: V_mic
+      validate_v_out.csv: V_out
+  wt_walks_v1:
+    normal_files:
+    - actuators_random_walk_1.csv
+    - actuators_random_walk_10.csv
+    - actuators_random_walk_11.csv
+    - actuators_random_walk_12.csv
+    - actuators_random_walk_13.csv
+    - actuators_random_walk_14.csv
+    - actuators_random_walk_15.csv
+    - actuators_random_walk_16.csv
+    - actuators_random_walk_2.csv
+    - actuators_random_walk_3.csv
+    - actuators_random_walk_4.csv
+    - actuators_random_walk_5.csv
+    - actuators_random_walk_6.csv
+    - actuators_random_walk_7.csv
+    - actuators_random_walk_8.csv
+    - actuators_random_walk_9.csv
+    - loads_hatch_mix_fast_run_1.csv
+    - loads_hatch_mix_fast_run_2.csv
+    - loads_hatch_mix_fast_run_3.csv
+    - loads_hatch_mix_fast_run_4.csv
+    - loads_hatch_mix_fast_run_5.csv
+    - loads_hatch_mix_slow_run_1.csv
+    - loads_hatch_mix_slow_run_2.csv
+    - loads_hatch_mix_slow_run_3.csv
+    - loads_hatch_mix_slow_run_4.csv
+    - loads_hatch_mix_slow_run_5.csv
+    anomalous_files:
+    - regime_jumps_multi.csv
+    - regime_jumps_single.csv
+    root_causes:
+      regime_jumps_multi.csv: H,T_in,T_out,O_up,O_dw,O_amb,O_int,R_in,R_out,R_1,R_2
+      regime_jumps_single.csv: H,T_in,T_out,O_up,O_dw,O_amb,O_int,R_in,R_out,R_1,R_2
+  lt_interventions_standard_v1:
+    normal_files:
+    - uniform_reference.csv
+    anomalous_files:
+    - uniform_blue_mid.csv
+    - uniform_blue_strong.csv
+    - uniform_diode_ir_1_mid.csv
+    - uniform_diode_ir_1_strong.csv
+    - uniform_diode_ir_2_mid.csv
+    - uniform_diode_ir_2_strong.csv
+    - uniform_diode_ir_3_mid.csv
+    - uniform_diode_ir_3_strong.csv
+    - uniform_diode_vis_1_mid.csv
+    - uniform_diode_vis_2_mid.csv
+    - uniform_diode_vis_3_mid.csv
+    - uniform_green_mid.csv
+    - uniform_green_strong.csv
+    - uniform_l_11_mid.csv
+    - uniform_l_12_mid.csv
+    - uniform_l_21_mid.csv
+    - uniform_l_22_mid.csv
+    - uniform_l_31_mid.csv
+    - uniform_l_32_mid.csv
+    - uniform_osr_c_mid.csv
+    - uniform_osr_c_strong.csv
+    - uniform_osr_c_weak.csv
+    - uniform_pol_1_mid.csv
+    - uniform_pol_1_strong.csv
+    - uniform_pol_2_mid.csv
+    - uniform_pol_2_strong.csv
+    - uniform_red_mid.csv
+    - uniform_red_strong.csv
+    - uniform_t_ir_1_mid.csv
+    - uniform_t_ir_1_strong.csv
+    - uniform_t_ir_1_weak.csv
+    - uniform_t_ir_2_mid.csv
+    - uniform_t_ir_2_strong.csv
+    - uniform_t_ir_2_weak.csv
+    - uniform_t_ir_3_mid.csv
+    - uniform_t_ir_3_strong.csv
+    - uniform_t_ir_3_weak.csv
+    - uniform_t_vis_1_mid.csv
+    - uniform_t_vis_1_strong.csv
+    - uniform_t_vis_1_weak.csv
+    - uniform_t_vis_2_mid.csv
+    - uniform_t_vis_2_strong.csv
+    - uniform_t_vis_2_weak.csv
+    - uniform_t_vis_3_mid.csv
+    - uniform_t_vis_3_strong.csv
+    - uniform_t_vis_3_weak.csv
+    - uniform_v_angle_1_mid.csv
+    - uniform_v_angle_1_strong.csv
+    - uniform_v_angle_2_mid.csv
+    - uniform_v_angle_2_strong.csv
+    - uniform_v_c_mid.csv
+    - uniform_v_c_strong.csv
+    root_causes:
+      uniform_blue_mid.csv: B
+      uniform_blue_strong.csv: B
+      uniform_diode_ir_1_mid.csv: D^I_1
+      uniform_diode_ir_1_strong.csv: D^I_1
+      uniform_diode_ir_2_mid.csv: D^I_2
+      uniform_diode_ir_2_strong.csv: D^I_2
+      uniform_diode_ir_3_mid.csv: D^I_3
+      uniform_diode_ir_3_strong.csv: D^I_3
+      uniform_diode_vis_1_mid.csv: D^V_1
+      uniform_diode_vis_2_mid.csv: D^V_2
+      uniform_diode_vis_3_mid.csv: D^V_3
+      uniform_green_mid.csv: G
+      uniform_green_strong.csv: G
+      uniform_l_11_mid.csv: L_11
+      uniform_l_12_mid.csv: L_12
+      uniform_l_21_mid.csv: L_21
+      uniform_l_22_mid.csv: L_22
+      uniform_l_31_mid.csv: L_31
+      uniform_l_32_mid.csv: L_32
+      uniform_osr_c_mid.csv: O_C
+      uniform_osr_c_strong.csv: O_C
+      uniform_osr_c_weak.csv: O_C
+      uniform_pol_1_mid.csv: theta_1
+      uniform_pol_1_strong.csv: theta_1
+      uniform_pol_2_mid.csv: theta_2
+      uniform_pol_2_strong.csv: theta_2
+      uniform_red_mid.csv: R
+      uniform_red_strong.csv: R
+      uniform_t_ir_1_mid.csv: T^I_1
+      uniform_t_ir_1_strong.csv: T^I_1
+      uniform_t_ir_1_weak.csv: T^I_1
+      uniform_t_ir_2_mid.csv: T^I_2
+      uniform_t_ir_2_strong.csv: T^I_2
+      uniform_t_ir_2_weak.csv: T^I_2
+      uniform_t_ir_3_mid.csv: T^I_3
+      uniform_t_ir_3_strong.csv: T^I_3
+      uniform_t_ir_3_weak.csv: T^I_3
+      uniform_t_vis_1_mid.csv: T^V_1
+      uniform_t_vis_1_strong.csv: T^V_1
+      uniform_t_vis_1_weak.csv: T^V_1
+      uniform_t_vis_2_mid.csv: T^V_2
+      uniform_t_vis_2_strong.csv: T^V_2
+      uniform_t_vis_2_weak.csv: T^V_2
+      uniform_t_vis_3_mid.csv: T^V_3
+      uniform_t_vis_3_strong.csv: T^V_3
+      uniform_t_vis_3_weak.csv: T^V_3
+      uniform_v_angle_1_mid.csv: R_1
+      uniform_v_angle_1_strong.csv: R_1
+      uniform_v_angle_2_mid.csv: R_2
+      uniform_v_angle_2_strong.csv: R_2
+      uniform_v_c_mid.csv: R_C
+      uniform_v_c_strong.csv: R_C
+  lt_malus_v1:
+    normal_files: []
+    anomalous_files:
+    - blue_128.csv
+    - blue_255.csv
+    - blue_64.csv
+    - green_128.csv
+    - green_255.csv
+    - green_64.csv
+    - red_128.csv
+    - red_255.csv
+    - red_64.csv
+    - white_128.csv
+    - white_255.csv
+    - white_64.csv
+    root_causes:
+      blue_128.csv: B,theta_1,theta_2
+      blue_255.csv: B,theta_1,theta_2
+      blue_64.csv: B,theta_1,theta_2
+      green_128.csv: G,theta_1,theta_2
+      green_255.csv: G,theta_1,theta_2
+      green_64.csv: G,theta_1,theta_2
+      red_128.csv: R,theta_1,theta_2
+      red_255.csv: R,theta_1,theta_2
+      red_64.csv: R,theta_1,theta_2
+      white_128.csv: R,G,B,theta_1,theta_2
+      white_255.csv: R,G,B,theta_1,theta_2
+      white_64.csv: R,G,B,theta_1,theta_2
+  lt_test_v1:
+    normal_files: []
+    anomalous_files:
+    - analog_calibration.csv
+    - angle_sensors.csv
+    - current_sensor.csv
+    - ir_sensors.csv
+    root_causes:
+      analog_calibration.csv: R_C,R_1,R_2
+      angle_sensors.csv: R,G,B,theta_1,theta_2,R_1,R_2,O_1,O_2
+      current_sensor.csv: O_C,R_C
+      ir_sensors.csv: R,G,B,theta_1,theta_2,D^I_1,D^I_2,D^I_3,T^I_1,T^I_2,T^I_3
+  lt_validate_v1:
+    normal_files: []
+    anomalous_files:
+    - validate_blue.csv
+    - validate_diode_ir_1.csv
+    - validate_diode_ir_2.csv
+    - validate_diode_ir_3.csv
+    - validate_diode_vis_1.csv
+    - validate_diode_vis_2.csv
+    - validate_diode_vis_3.csv
+    - validate_green.csv
+    - validate_l_11.csv
+    - validate_l_12.csv
+    - validate_l_21.csv
+    - validate_l_22.csv
+    - validate_l_31.csv
+    - validate_l_32.csv
+    - validate_osr_angle_1.csv
+    - validate_osr_angle_2.csv
+    - validate_osr_c.csv
+    - validate_pol_1.csv
+    - validate_pol_2.csv
+    - validate_red.csv
+    - validate_t_ir_1.csv
+    - validate_t_ir_2.csv
+    - validate_t_ir_3.csv
+    - validate_t_vis_1.csv
+    - validate_t_vis_2.csv
+    - validate_t_vis_3.csv
+    - validate_v_angle_1.csv
+    - validate_v_angle_2.csv
+    - validate_v_c.csv
+    root_causes:
+      validate_blue.csv: B
+      validate_diode_ir_1.csv: D^I_1
+      validate_diode_ir_2.csv: D^I_2
+      validate_diode_ir_3.csv: D^I_3
+      validate_diode_vis_1.csv: D^V_1
+      validate_diode_vis_2.csv: D^V_2
+      validate_diode_vis_3.csv: D^V_3
+      validate_green.csv: G
+      validate_l_11.csv: L_11
+      validate_l_12.csv: L_12
+      validate_l_21.csv: L_21
+      validate_l_22.csv: L_22
+      validate_l_31.csv: L_31
+      validate_l_32.csv: L_32
+      validate_osr_angle_1.csv: O_1
+      validate_osr_angle_2.csv: O_2
+      validate_osr_c.csv: O_C
+      validate_pol_1.csv: theta_1
+      validate_pol_2.csv: theta_2
+      validate_red.csv: R
+      validate_t_ir_1.csv: T^I_1
+      validate_t_ir_2.csv: T^I_2
+      validate_t_ir_3.csv: T^I_3
+      validate_t_vis_1.csv: T^V_1
+      validate_t_vis_2.csv: T^V_2
+      validate_t_vis_3.csv: T^V_3
+      validate_v_angle_1.csv: R_1
+      validate_v_angle_2.csv: R_2
+      validate_v_c.csv: R_C
+  lt_walks_v1:
+    normal_files:
+    - actuators_white.csv
+    - color_mix.csv
+    - smooth_polarizers.csv
+    anomalous_files: []
+    root_causes: {}

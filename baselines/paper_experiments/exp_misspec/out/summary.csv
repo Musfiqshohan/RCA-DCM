@@ -1,0 +1,9 @@
+arm,label,k,n,rate,ci_lo,ci_hi
+control,"true
+graph",88,100,0.88,0.8019,0.93
+dense,"$+$50%
+dir & bi",84,100,0.84,0.7558,0.899
+bi_sparse,"$-$50%
+bidir",87,100,0.87,0.7902,0.9224
+both_sparse,"$-$50%
+dir & bi",76,100,0.76,0.6677,0.8331

@@ -1,0 +1,75 @@
+
+exp:
+  grp: bow  
+  dst: bow8000
+  opt: maxmin  # choices: [minmin, maxmin]
+  gpu_id: 0
+  name: ""
+  snt_chk: False
+  mdl: dcm_mlp # choices: [dcm_mlp: graph given | dcm_cmpt: no graph given complete graph used | 3_models: no graph, ancestor & descendant used | dcm_gan: graph given, gan used]
+  is_rc: None
+  dim_dict_all_continuous: false  # when true, override dim_dict to 1 for all nodes (for continuous LIT data)
+  data_type: cont  # choices: [cont, disc] - cont: continuous vars (dim_dict=1), disc: discrete
+  normalize: True  # for continuous: jointly normalize nrm+anm before training
+  cmpt_grp: False  # when true, use complete graph for training
+  snk_grp: False  # when true, using all variables as parents for predicting the potential root cause node.
+  snk_conf_grp: False  # "Sink Confounded Star": like snk_grp (every other node -> candidate Y),
+    # PLUS every pair of the other nodes is bidirected-confounded (one N-1-way confounder
+    # group spanning all of them) -- no edges among them otherwise, no bidirected edge
+    # touching Y. Mutually exclusive with snk_grp (only one sink-style transform applies).
+    # engine='original' only: Phase 1 of engine='normal_once' pretrains one parentless
+    # mechanism per node and reuses it across every candidate; here each node's confounder
+    # membership (and thus its noise structure) changes depending on which node is
+    # currently the excluded candidate Y, so nothing is safe to share across candidates.
+    # DCM_RCA.run() raises if this is combined with engine='normal_once'.
+  metric: wasserstein  # for data_type=cont: choices [mse, mmd, wasserstein, baro]
+  plot: False
+
+# Paths and directories
+pth:
+  rot_dir: .
+  grp_yml: ${pth.rot_dir}/dcm/dat_gen/graphs.yaml
+  dat_dir: baselines/LIT/data     # relative path from RCA folder
+  nrm_dat_pth: ${pth.rot_dir}/${pth.dat_dir}/${exp.dst}/${exp.data_type}_nrm.csv
+  anm_dat_pth: ${pth.rot_dir}/${pth.dat_dir}/${exp.dst}/${exp.data_type}_anm.csv
+  out_dir: ${pth.rot_dir}/dcm/out/${exp.dst}/${exp.name}
+  issues: null   # null = all faults; or one of: cpu, mem, delay, loss; override e.g. ++pth.issues=cpu or ++pth.issues=[cpu,mem]
+  
+
+
+# Training parameters
+trn:
+  bat_siz: 256
+  lrn_rat: 0.0005
+  num_epc: 100
+  gen_sam: 5000
+  num_sam: 5000
+  anm_sam: 1e9
+  thr_num: 5
+  upd: shared  #[seq, shared]
+  steps_per_epoch: null  # if set, train exactly this many mini-batches per epoch (option C); default null trains max(len(nrm_loader), len(anm_loader)) steps (option A), cycling+reshuffling whichever loader is shorter to fill the gap -- fixes BUG(A1-16)
+  early_stop: false  # both engines. engine='normal_once': BOTH training phases train up to max_epc (not num_epc) and stop early once their monitored score stabilizes -- Phase 1 (_pretrain_normal_base) monitors the mean normal-only wasserstein goodness-of-fit across all nodes (one whole-model stop decision, no per-node anomalous side exists in this phase); Phase 2 (_train_normal_once) monitors each candidate's own tvd_diff (wasserstein-add ranking score) independently. engine='original': each candidate's _train() call monitors its own tvd_diff independently and stops on its own, same mechanism as normal_once's Phase 2 -- safe even for graphs (snk_conf_grp) that can't use engine='normal_once' at all, since this engine has no cross-candidate pretrained state to get out of sync. See docstrings in train_normal_once.py and train_main.py.
+  max_epc: 100  # ceiling used instead of num_epc when early_stop=true, for both engines/phases
+  early_stop_tol: 0.05  # relative change threshold between consecutive 5-epoch eval points, for both engines/phases. Was 0.02/patience=2 -- raised after a smoke test showed non-root-cause nodes' tvd_diff jitters by a few % from wasserstein-estimate resampling noise (fresh gen_sam draw every eval) almost indefinitely, well past when the RANKING itself had already stabilized -- see conversation notes 2026-08-15.
+  early_stop_patience: 1  # number of consecutive 5-epoch transitions that must each be below early_stop_tol before stopping, for both engines/phases
+
+# Model parameters
+mdl:
+  obs_u: 0  # choices: [-1, 0, 1] -1: not observed but has same state, 0: not observed, 1: observed
+  lat_dim: 10
+  hid_dim: 32
+  
+
+
+# Optimization parameters
+opt:
+  lam_obs: 1  #default: 1 Exact P(V) match or not
+  do_reuse: 1  #choices: [0, 1] 0: no reuse, 1: reuse
+  tvd_gap: 0.05  # Threshold for TVD difference to identify root cause
+  tvd_rank_type: 'add'  # choices: ['add', 'sub'] add: add the two TVD values, sub: subtract the two TVD values
+
+#  Examples:
+
+
+
+

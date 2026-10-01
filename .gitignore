@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+
+# Training logs and Hydra working directories
+logs/
+outputs/
+**/.hydra/
+dcm/out/
+dcm/outputs/
+
+# Generated experiment data (the code regenerates these)
+baselines/LIT/data/*/
+baselines/paper_experiments/**/data/
+baselines/paper_experiments/**/dcm_out/
+baselines/paper_experiments/**/runs/
+baselines/causal_chamber_hidden_rc/data/
+baselines/causal_chamber/**/out/*.csv
+baselines/causal_chamber_hidden_rc/out/

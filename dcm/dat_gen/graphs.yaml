@@ -1,0 +1,55 @@
+graphs:
+  lit_random_v12_lat4:
+    type: admg
+    dag:
+      X1: []
+      X2:
+      - X1
+      X4:
+      - X1
+      - X2
+      X3:
+      - X2
+      X5:
+      - X1
+      - X3
+      - X4
+      X6:
+      - X2
+      - X3
+      - X4
+      - X5
+      X7:
+      - X1
+      - X3
+      - X4
+      - X6
+      X8:
+      - X3
+      - X4
+      - X5
+      - X6
+      - X7
+    confounders:
+      L1:
+      - X2
+      - X5
+      L2:
+      - X1
+      - X3
+      L3:
+      - X3
+      - X6
+      L4:
+      - X3
+      - X4
+    dim_dict:
+      X1: 30
+      X2: 30
+      X4: 30
+      X3: 30
+      X5: 30
+      X6: 30
+      X7: 30
+      X8: 30
+    root_cause: X6,X7,X5,
